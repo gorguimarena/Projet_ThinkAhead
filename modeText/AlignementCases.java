@@ -10,10 +10,24 @@ public class AlignementCases {
     public Case getCaseNum(int num){
         return lesCases.get(num);
     }
-    public Case[] getLesCasesLibre(){
-        return null;
+    public LinkedList<Case> getLesCasesLibre(){
+        LinkedList<Case> cases=new LinkedList<>();
+        for (Case cas: lesCases) {
+            if (cas.estLibre()){
+                cases.add(cas);
+            }
+        }
+        return cases;
     }
-    Case getCaseLibreValeurMax(){
-        return null;
+    public Case getCaseLibreValeurMax(){
+        int max=lesCases.getFirst().getValeur();
+        Case MaxCase=null;
+        for (Case cas: lesCases) {
+            if (cas.estLibre() && cas.getValeur()>max){
+                max=cas.getValeur();
+                MaxCase=cas;
+            }
+        }
+        return MaxCase;
     }
 }

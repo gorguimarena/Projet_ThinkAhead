@@ -5,6 +5,7 @@ public class Orientation {
     boolean estVertical(){
         return true;
     }
+
     boolean estHorizontale(){
         return true;
     }

@@ -12,6 +12,9 @@ public class Partie {
     private LinkedList <Coup> lesCoups;
     int [] score;
 
+    //constructeur de la classe
+
+
     //les methodes
     //getter de joueurs
     public Joueur getJoueur(int j){
