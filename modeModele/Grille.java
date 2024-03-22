@@ -3,13 +3,15 @@ package modeModele;
 public class Grille {
     private AlignementCases alignementCases;
     private int tail;
+
     public Case[] lesCases;
     private void Case(int n){
 
     }
     public Grille(int tail){
         this.tail=tail;
-        this.lesCases=new Case[tail];
+
+        this.lesCases=new Case[tail*tail];
     }
     public Case getCase(Position pos){
         int indi=0;
@@ -22,12 +24,7 @@ public class Grille {
     }
     public boolean selectionCase(Position pos, Joueur joueur){
 
-        for (int i = 0; i < lesCases.length; i++) {
-            if (lesCases[i].getPosition()==pos && lesCases[i].getJoueurPar()==joueur){
-                return ;
-            }
-        }
-        return cas;
+        return true;
     }
    public void setAlignementactif(int num, Orientation orientation){
 
@@ -42,4 +39,8 @@ public class Grille {
     public void extractAlign(int lign){
 
     }
+    public void extractCases(){ //methode pour recuperer la ligne ou les colonne de la grille '''''''''''''''''''''''''''''
+
+    }
+
 }

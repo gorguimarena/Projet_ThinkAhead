@@ -11,32 +11,32 @@ public class Case {
     }
 
     //les methodes
-    //methode pour verifier si une case est libre ou pas
-    boolean estLibre(){
+
+    boolean estLibre(){     //methode pour verifier si une case est libre ou pas
         if (this.valeur!=null){
             return true;
         }
         return false;
     }
-    //getter pour valeur
-    public int getValeur(){
+
+    public int getValeur(){      //getter pour valeur
         return this.valeur;
     }
-    //getter pour l'attribut jouerPar
-    public Joueur getJoueurPar(){
+
+    public Joueur getJoueurPar(){   //getter pour l'attribut jouerPar
         return this.joueurPar;
     }
-    //setter pour jouerPar
-   public void setJoueurPar(Joueur joueur){
+
+   public void setJoueurPar(Joueur joueur){     //setter pour jouerPar
         this.joueurPar=joueur;
     }
-    //setter valeur
-    public void setValeur(int newVal){
+
+    public void setValeur(int newVal){   //setter valeur
         this.valeur=newVal;
 
     }
-    //gtter position
-    public Position getPosition(){
+
+    public Position getPosition(){  //getter position
         return this.position;
     }
 

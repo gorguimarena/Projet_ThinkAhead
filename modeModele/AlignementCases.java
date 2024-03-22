@@ -2,48 +2,36 @@ package modeModele;
 
 public class AlignementCases {
     Orientation orientation;
-    private Case[][] lesCases;
-    int position;
+    private Case[] lesCases;    //variables pour le stockage des cases
+    int position;   //le position a jouer
 
-    public Case getCaseNum(int lign,int col){
-        return lesCases[lign][col];
+    public Case getCaseNum(int num){ //recuperation d'une case par som numero ''''''''''''''''''''''''
+        return lesCases[num];
     }
-    public Case [] getLesCasesLibre(){
+
+    public Case [] getLesCasesLibre(){  //recherche des cases libre
         Case[] tabreturn;
         int tail=0;
         for (int i = 0; i < lesCases.length; i++) {
-            for (int j = 0; j < lesCases.length; j++) {
-                if (lesCases[i][j].estLibre()){
+                if (lesCases[i].estLibre()){
                     tail++;
                 }
-            }
         }
         tabreturn=new Case[tail];
         tail=0;
         for (int i = 0; i < lesCases.length; i++) {
-            for (int j = 0; j < lesCases.length; j++) {
-                if (lesCases[i][j].estLibre()){
-                    tabreturn[tail]=lesCases[i][j];
+                if (lesCases[i].estLibre()){
+                    tabreturn[tail]=lesCases[i];
                     tail++;
                 }
-            }
         }
         return tabreturn;
     }
-    public Case getCaseLibreValeurMax(int lign,int col){
+
+    public Case getCaseLibreValeurMax(){ //a revoir ''''''''''''''''''
         int max;
         Case MaxCase=null;
-        if (orientation.estHorizontale()){
-            max=lesCases[lign][0].getValeur();
-            for (int i = 0; i < lesCases.length; i++) {
-                for (int j = 0; j < lesCases.length; j++) {
-                    if (lesCases[i][j].estLibre() && lesCases[i][j].getValeur()>max){
-                        max=lesCases[i][j].getValeur();
-                        MaxCase=lesCases[i][j];
-                    }
-                }
-            }
-        }
+
         return MaxCase;
     }
 }
