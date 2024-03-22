@@ -7,7 +7,7 @@ public class GestionGrille {
         for (int i = 0; i < tail; i++) {
             System.out.print("+--");
         }
-        System.out.println();
+        System.out.println(" ");
     }
     public static void indixY(int tail){ //methode pour indique les indice des colonne
         for (int i = 0; i < tail; i++) {
@@ -21,13 +21,15 @@ public class GestionGrille {
 
     public static void afficherGrille(Grille grille){  //methode pour l'affichage des grille
         indixY(grille.getTail());
+        int indic=0;
         for (int i = 0; i < grille.getTail(); i++) {
 
             lign(grille.getTail());
             indixX(i);
             System.out.print("|");
             for (int j = 0; j < grille.getTail(); j++) {
-                System.out.print(grille.lesCases[j].getValeur()+"| ");
+                System.out.print(grille.lesCases[indic].getValeur()+"| ");
+                indic++;
             }
             System.out.println();
 
