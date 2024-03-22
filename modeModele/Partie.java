@@ -1,8 +1,4 @@
-package modeText;
-
-import modeText.Coup;
-import modeText.Grille;
-import modeText.Joueur;
+package modeModele;
 
 import java.util.LinkedList;
 

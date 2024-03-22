@@ -1,4 +1,4 @@
-package modeText;
+package modeModele;
 
 public class Coup {
     Joueur joueur;

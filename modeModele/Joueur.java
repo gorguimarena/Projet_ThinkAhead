@@ -1,4 +1,4 @@
-package modeText;
+package modeModele;
 
 public abstract class Joueur {
     String nom;

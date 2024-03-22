@@ -1,6 +1,4 @@
-package modeText;
-
-import modeText.Joueur;
+package modeModele;
 
 public class JoueurOrdinateur extends Joueur {
     String typeDeJeu;

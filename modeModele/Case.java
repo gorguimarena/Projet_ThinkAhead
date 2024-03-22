@@ -1,9 +1,14 @@
-package modeText;
+package modeModele;
 
 public class Case {
     private Integer valeur;
     private Joueur joueurPar;
     private Position position;
+
+    //constructeur
+    public Case(Position position){
+        this.position=position;
+    }
 
     //les methodes
     //methode pour verifier si une case est libre ou pas
@@ -28,6 +33,7 @@ public class Case {
     //setter valeur
     public void setValeur(int newVal){
         this.valeur=newVal;
+
     }
     //gtter position
     public Position getPosition(){

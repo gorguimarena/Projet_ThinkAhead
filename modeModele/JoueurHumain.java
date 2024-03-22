@@ -1,6 +1,4 @@
-package modeText;
-
-import modeText.Joueur;
+package modeModele;
 
 public class JoueurHumain extends Joueur {
     String nom;

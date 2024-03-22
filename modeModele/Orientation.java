@@ -1,4 +1,4 @@
-package modeText;
+package modeModele;
 
 public class Orientation {
     int orientation;
