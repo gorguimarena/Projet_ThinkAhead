@@ -1,7 +1,7 @@
 package modeTexte;
 import modeModele.Grille;
 
-class GestionGrille {
+public class GestionGrille {
 
     public static void lign(int tail){  //methode pour la delimitation de ligne
         for (int i = 0; i < tail; i++) {
