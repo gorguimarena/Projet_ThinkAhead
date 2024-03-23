@@ -1,4 +1,5 @@
 package modeTexte;
+import modeModele.Case;
 import modeModele.Grille;
 
 public class GestionGrille {
@@ -7,7 +8,7 @@ public class GestionGrille {
         for (int i = 0; i < tail; i++) {
             System.out.print("+--");
         }
-        System.out.println(" ");
+        System.out.println();
     }
     public static void indixY(int tail){ //methode pour indique les indice des colonne
         for (int i = 0; i < tail; i++) {
@@ -23,7 +24,6 @@ public class GestionGrille {
         indixY(grille.getTail());
         int indic=0;
         for (int i = 0; i < grille.getTail(); i++) {
-
             lign(grille.getTail());
             indixX(i);
             System.out.print("|");
@@ -32,8 +32,41 @@ public class GestionGrille {
                 indic++;
             }
             System.out.println();
-
         }
+    }
+    public static int[] lignPosPossible(Case[] cases){     //recuperation des ligne possible
+        int ind=0;
+        for (Case cas:cases) {
+            if (cas.getValeur()!=null){
+                ind++;
+            }
+        }
+        int[] pos=new int[ind];
+         ind=0;
+        for (Case cas:cases) {
+            if (cas.getValeur()!=null){
+                pos[ind]=cas.getPosition().pos_x;
+                ind++;
+            }
+        }
+        return pos;
+    }
+    public static int[] colPosPossible(Case[] cases){  //recuperation des colonne possible
+        int ind=0;
+        for (Case cas:cases) {
+            if (cas.getValeur()!=null){
+                ind++;
+            }
+        }
+        int[] pos=new int[ind];
+        ind=0;
+        for (Case cas:cases) {
+            if (cas.getValeur()!=null){
+                pos[ind]=cas.getPosition().pos_y;
+                ind++;
+            }
+        }
+        return pos;
     }
 
 }

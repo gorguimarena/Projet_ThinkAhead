@@ -19,7 +19,7 @@ public class Case {
         return false;
     }
 
-    public int getValeur(){      //getter pour valeur
+    public Integer getValeur(){      //getter pour valeur
         return this.valeur;
     }
 

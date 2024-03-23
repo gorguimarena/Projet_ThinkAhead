@@ -39,8 +39,29 @@ public class Grille {
     public void extractAlign(int lign){
 
     }
-    public void extractCases(){ //methode pour recuperer la ligne ou les colonne de la grille '''''''''''''''''''''''''''''
-
+    public Case[] extractCasesLign(int numLign){ //methode pour recuperer la ligne la grille
+        Case [] cases=new Case[tail];
+        int indic=numLign*tail;
+        for (int i = 0; i < cases.length; i++) {
+            cases[i]=lesCases[indic];
+            indic++;
+        }
+        return cases;
     }
+    public Case[] extractCasesColon(int numCol){    //methode pour extraire la colonne de la grille
+        Case [] cases=new Case[tail];
+        int indic=0;
+        for (Case cas:this.lesCases) {
+            if (cas.getPosition().pos_y==numCol){
+                cases[indic]=cas;
+                if (indic==tail-1){
+                    break;
+                }
+                indic++;
+            }
+        }
+        return cases;
+    }
+
 
 }

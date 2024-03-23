@@ -5,11 +5,15 @@ import java.util.LinkedList;
 public class Partie {
     private Grille laGrille;
     private Joueur[] joueurs;
-    private LinkedList <Coup> lesCoups;
+    private Coup[] lesCoups;
     int [] score;
 
     //constructeur de la classe
-
+    public Partie(){
+        this.lesCoups=new Coup[laGrille.getTail()*laGrille.getTail()];
+        joueurs=new Joueur[2];
+        score=new int[2];
+    }
 
     //les methodes
     //getter de joueurs
@@ -26,10 +30,12 @@ public class Partie {
     int [] getScore(){
         return this.score;
     }
-    public void ajouterCoup(Coup coup){
-        lesCoups.add(coup);
-    }
-    void annulerCoups(int nbr){
 
+    public void ajouterCoup(Coup coup){     //ajout de coup
+
+    }
+
+    void annulerCoups(int nbr){
+        laGrille.lesCases[nbr]=null;
     }
 }
