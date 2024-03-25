@@ -1,9 +1,8 @@
 package modeModele;
 
 public class AlignementCases {
-    Orientation orientation;
-    private Case[] lesCases;    //variables pour le stockage des cases
-    int position;   //le position a jouer
+    public Orientation orientation;
+    public Case[] lesCases;    //variables pour le stockage des cases
 
     public Case getCaseNum(int num){ //recuperation d'une case par som numero ''''''''''''''''''''''''
         return lesCases[num];

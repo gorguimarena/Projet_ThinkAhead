@@ -1,7 +1,7 @@
 package modeModele;
 
 public class Grille {
-    private AlignementCases alignementCases;
+    public AlignementCases alignementCases=new AlignementCases();
     private int tail;
 
     public Case[] lesCases;
@@ -10,7 +10,7 @@ public class Grille {
     }
     public Grille(int tail){
         this.tail=tail;
-
+        this.alignementCases.lesCases=new Case[tail];
         this.lesCases=new Case[tail*tail];
     }
     public Case getCase(Position pos){
@@ -40,27 +40,27 @@ public class Grille {
 
     }
     public Case[] extractCasesLign(int numLign){ //methode pour recuperer la ligne la grille
-        Case [] cases=new Case[tail];
+
         int indic=numLign*tail;
-        for (int i = 0; i < cases.length; i++) {
-            cases[i]=lesCases[indic];
+        for (int i = 0; i < this.alignementCases.lesCases.length; i++) {
+            this.alignementCases.lesCases[i]=lesCases[indic];
             indic++;
         }
-        return cases;
+        return alignementCases.lesCases;
     }
     public Case[] extractCasesColon(int numCol){    //methode pour extraire la colonne de la grille
-        Case [] cases=new Case[tail];
+
         int indic=0;
-        for (Case cas:this.lesCases) {
+        for (Case cas:lesCases) {
             if (cas.getPosition().pos_y == numCol){
-                cases[indic]=cas;
-                if (indic==tail-1){
+                this.alignementCases.lesCases[indic]=cas;
+                if (indic==this.tail-1){
                     break;
                 }
                 indic++;
             }
         }
-        return cases;
+        return alignementCases.lesCases;
     }
 
 

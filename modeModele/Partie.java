@@ -1,9 +1,6 @@
 package modeModele;
 
-import modeTexte.Affichage;
-import modeTexte.ConfCases;
-import modeTexte.GestionGrille;
-import modeTexte.Saisir;
+import modeTexte.*;
 
 import java.util.LinkedList;
 import java.util.Random;
@@ -45,26 +42,33 @@ public class Partie {
             System.out.println("La ligne "+al+" est choisi ");
         }
         while (true){
-            Case [] align;
+            Case [] alignCase;
+            int [] align;
             GestionGrille.afficherGrille(this.laGrille);
             if (col){
                 Affichage.alignAJouer(al,"colone");
-                align=this.laGrille.extractCasesColon(al);
-                Affichage.posPossible(GestionGrille.colPosPossible(align));
+                alignCase=this.laGrille.extractCasesColon(al);
+                align=GestionGrille.colPosPossible(alignCase);
+                if (Regles.alignVide(align)){
+                    break;
+                }
+                Affichage.posPossible(align);
                 col=false;
             }else {
                 Affichage.alignAJouer(al,"ligne");
-                 align=this.laGrille.extractCasesLign(al);
-                Affichage.posPossible(GestionGrille.lignPosPossible(align));
+                 alignCase=this.laGrille.extractCasesLign(al);
+                 align=GestionGrille.lignPosPossible(alignCase);
+                 if (Regles.alignVide(align)){
+                     break;
+                 }
+                Affichage.posPossible(align);
                 col=true;
             }
             int sais= Saisir.recuperPosJouer();
             al=sais;
-            try {
-                annulerCoups(align,al,col);
-            }catch (ArrayIndexOutOfBoundsException e){
-                e.getMessage();
-            }
+            annulerCoups(alignCase,al,col);
+
+
 
         }
 
