@@ -36,7 +36,7 @@ public class Partie {
         Random ran=new Random();
         boolean col=true;
         ConfCases.config1(this.laGrille);
-        GestionGrille.afficherGrille(this.laGrille);
+
         int al= ran.nextInt(getLaGrille().getTail());
         if (al%2==0){
             System.out.println("La colonne "+al+" est choisi ");
@@ -45,18 +45,27 @@ public class Partie {
             System.out.println("La ligne "+al+" est choisi ");
         }
         while (true){
-
+            Case [] align;
+            GestionGrille.afficherGrille(this.laGrille);
             if (col){
                 Affichage.alignAJouer(al,"colone");
-                Affichage.posPossible(GestionGrille.colPosPossible(this.laGrille.extractCasesColon(al)));
+                align=this.laGrille.extractCasesColon(al);
+                Affichage.posPossible(GestionGrille.colPosPossible(align));
                 col=false;
             }else {
                 Affichage.alignAJouer(al,"ligne");
-                Affichage.posPossible(GestionGrille.lignPosPossible(this.laGrille.extractCasesLign(al)));
+                 align=this.laGrille.extractCasesLign(al);
+                Affichage.posPossible(GestionGrille.lignPosPossible(align));
                 col=true;
             }
             int sais= Saisir.recuperPosJouer();
             al=sais;
+            try {
+                annulerCoups(align,al,col);
+            }catch (ArrayIndexOutOfBoundsException e){
+                e.getMessage();
+            }
+
         }
 
     }
@@ -68,8 +77,14 @@ public class Partie {
 
     }
 
-    void annulerCoups(int nbr){
-
+    void annulerCoups(Case[] cas,int nbr,boolean iscol){
+        for (Case ca:cas) {
+            if (iscol && ca.getPosition().pos_y==nbr){
+                ca.setValeur(null);
+            }else if (!iscol && ca.getPosition().pos_x==nbr){
+                ca.setValeur(null);
+            }
+        }
     }
 
     public Grille getLaGrille() {
