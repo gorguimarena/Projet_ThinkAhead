@@ -1,7 +1,9 @@
 package modeModele;
 
 public class JoueurHumain extends Joueur {
-    String nom;
+    public JoueurHumain(String nom){
+        this.nom=nom;
+    }
 
     @Override
     public Position ajoutEn() {

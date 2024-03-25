@@ -15,16 +15,23 @@ public class Grille {
     }
     public Case getCase(Position pos){
         int indi=0;
-        for (int i = 0; i < lesCases.length; i++) {
-            if (lesCases[i].getPosition()==pos){
+        for (int i = 0; i < this.alignementCases.lesCases.length; i++) {
+            if (this.alignementCases.lesCases[i].getPosition()==pos){
                  indi=i;
+                 break;
             }
         }
-        return this.lesCases[indi];
+        return this.alignementCases.lesCases[indi];
     }
     public boolean selectionCase(Position pos, Joueur joueur){
-
-        return true;
+        Partie partie=new Partie(0,joueur);
+        if (JoueurHumain.class == joueur.getClass()){
+            Partie.setScore(getCase(pos).getValeur(),0); //()[0]=partie.getScore()[0]+getCase(pos).getValeur();
+            return true;
+        }else {
+            Partie.setScore(getCase(pos).getValeur(),1);           //partie.getScore()[1]=partie.getScore()[1]+getCase(pos).getValeur();
+            return true;
+        }
     }
    public void setAlignementactif(int num, Orientation orientation){
 

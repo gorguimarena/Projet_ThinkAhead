@@ -1,5 +1,8 @@
 package modeTexte;
 
+import modeModele.Joueur;
+import modeModele.JoueurHumain;
+
 import java.util.Arrays;
 
 public class Affichage {
@@ -14,6 +17,9 @@ public class Affichage {
     }
     public static void alignAJouer(int col,String align){  //affichage de l'alignement a jouer
         System.out.println("Vous devez jouer dans la "+align+" num "+col);
+    }
+    public static void affichScore(int [] score, Joueur joueur){
+        System.out.println("Le score est  "+score[1]+" vs "+score[0]+"( pour "+joueur.nom+")");
     }
 
 }

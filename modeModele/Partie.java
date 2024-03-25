@@ -2,23 +2,24 @@ package modeModele;
 
 import modeTexte.*;
 
-import java.util.LinkedList;
+import java.util.Arrays;
+
 import java.util.Random;
 
 public class Partie {
 
 
-    private Grille laGrille;
-    private Joueur[] joueurs;
+    private final Grille laGrille;
+    private Joueur[] joueurs=new Joueur[2];
     private Coup[] lesCoups;
-    int [] score;
+    static int [] score= new int[]{0,0};
 
     //constructeur de la classe
-    public Partie(int tailGril){
+    public Partie(int tailGril,Joueur joueur){
         this.laGrille=new  Grille(tailGril);
         this.lesCoups=new Coup[laGrille.getTail()*laGrille.getTail()];
-        joueurs=new Joueur[2];
-        score=new int[2];
+        joueurs[0]=joueur;
+        joueurs[1]=new JoueurOrdinateur();
 
     }
 
@@ -28,12 +29,12 @@ public class Partie {
         return joueurs[j];
     }
 
-
+    //methode de lancement du jeu
     public void commencer(){
         Random ran=new Random();
         boolean col=true;
         ConfCases.config1(this.laGrille);
-
+        boolean joue=false;
         int al= ran.nextInt(getLaGrille().getTail());
         if (al%2==0){
             System.out.println("La colonne "+al+" est choisi ");
@@ -45,30 +46,49 @@ public class Partie {
             Case [] alignCase;
             int [] align;
             GestionGrille.afficherGrille(this.laGrille);
+
             if (col){
                 Affichage.alignAJouer(al,"colone");
                 alignCase=this.laGrille.extractCasesColon(al);
                 align=GestionGrille.colPosPossible(alignCase);
                 if (Regles.alignVide(align)){
+                    Affichage.affichScore(getScore(),joueurs[0]);
                     break;
                 }
                 Affichage.posPossible(align);
                 col=false;
+
             }else {
                 Affichage.alignAJouer(al,"ligne");
                  alignCase=this.laGrille.extractCasesLign(al);
                  align=GestionGrille.lignPosPossible(alignCase);
                  if (Regles.alignVide(align)){
+                     Affichage.affichScore(getScore(),joueurs[0]);
                      break;
                  }
                 Affichage.posPossible(align);
                 col=true;
+
             }
-            int sais= Saisir.recuperPosJouer();
-            al=sais;
-            annulerCoups(alignCase,al,col);
 
+            if (joue){
+                this.laGrille.selectionCase(laGrille.alignementCases.getCaseLibreValeurMax().getPosition(), joueurs[1]);
 
+                annulerCoups(alignCase,laGrille.alignementCases.getindicLibreValeurMax(),col);
+                joue=false;
+            }else {
+
+                int sais;
+                do {
+
+                    System.out.println("\n"+joueurs[0].nom);
+                    sais= Saisir.recuperPosJouer();
+                }while (sais<0 || sais>= this.laGrille.getTail() || laGrille.alignementCases.getCaseNum(sais).getValeur()==null);
+                al=sais;
+                this.laGrille.selectionCase(laGrille.alignementCases.getCaseNum(al).getPosition(), joueurs[0]);
+                annulerCoups(alignCase,al,col);
+                joue=true;
+            }
 
         }
 
@@ -95,4 +115,7 @@ public class Partie {
         return laGrille;
     }
 
+    public static void setScore(int score,int i) {
+        Partie.score [i]+= score;
+    }
 }
