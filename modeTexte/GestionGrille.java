@@ -28,7 +28,11 @@ public class GestionGrille {
             indixX(i);
             System.out.print("|");
             for (int j = 0; j < grille.getTail(); j++) {
-                System.out.print(grille.lesCases[indic].getValeur()+"| ");
+                if (grille.lesCases[indic].getValeur()==null){
+                    System.out.print("x| ");
+                }else {
+                    System.out.print(grille.lesCases[indic].getValeur()+"| ");
+                }
                 indic++;
             }
             System.out.println();
@@ -45,7 +49,7 @@ public class GestionGrille {
          ind=0;
         for (Case cas:cases) {
             if (cas.getValeur()!=null){
-                pos[ind]=cas.getPosition().pos_x;
+                pos[ind]=cas.getPosition().pos_y;
                 ind++;
             }
         }
@@ -62,7 +66,7 @@ public class GestionGrille {
         ind=0;
         for (Case cas:cases) {
             if (cas.getValeur()!=null){
-                pos[ind]=cas.getPosition().pos_y;
+                pos[ind]=cas.getPosition().pos_x;
                 ind++;
             }
         }

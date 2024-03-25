@@ -12,7 +12,7 @@ public class ConfCases {
         int indic=0;
         for (int i = 0; i < grille.getTail(); i++) {
             for (int j = 0; j < grille.getTail(); j++) {
-                grille.lesCases[indic]=new Case(new Position(j,i));
+                grille.lesCases[indic]=new Case(new Position(i,j));
                 grille.lesCases[indic].setValeur(al.nextInt(9));
                 indic++;
             }

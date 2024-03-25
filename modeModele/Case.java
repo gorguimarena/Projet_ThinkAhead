@@ -31,7 +31,7 @@ public class Case {
         this.joueurPar=joueur;
     }
 
-    public void setValeur(int newVal){   //setter valeur
+    public void setValeur(Integer newVal){   //setter valeur
         this.valeur=newVal;
 
     }

@@ -52,7 +52,7 @@ public class Grille {
         Case [] cases=new Case[tail];
         int indic=0;
         for (Case cas:this.lesCases) {
-            if (cas.getPosition().pos_y==numCol){
+            if (cas.getPosition().pos_y == numCol){
                 cases[indic]=cas;
                 if (indic==tail-1){
                     break;
