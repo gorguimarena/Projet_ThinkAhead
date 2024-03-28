@@ -11,6 +11,7 @@ public class GestionGrille {
         System.out.println();
     }
     public static void indixY(int tail){ //methode pour indique les indice des colonne
+        System.out.println();
         for (int i = 0; i < tail; i++) {
             System.out.print("  "+i);
         }

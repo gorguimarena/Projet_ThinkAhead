@@ -1,9 +1,5 @@
 package modeModele;
-
 import modeTexte.*;
-
-import java.util.Arrays;
-
 import java.util.Random;
 
 public class Partie {
@@ -73,8 +69,8 @@ public class Partie {
 
             if (joue){
                 this.laGrille.selectionCase(laGrille.alignementCases.getCaseLibreValeurMax().getPosition(), joueurs[1]);
-
-                annulerCoups(alignCase,laGrille.alignementCases.getindicLibreValeurMax(),col);
+                al=laGrille.alignementCases.getindicLibreValeurMax();
+                annulerCoups(alignCase,al,col);
                 joue=false;
             }else {
 
